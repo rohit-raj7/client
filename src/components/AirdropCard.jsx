@@ -1,9 +1,20 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { MapPin, Calendar, ArrowRight } from "lucide-react";
 
 const AirdropCard = ({ airdrop }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/airdrop/${airdrop.id}`);
+  };
+
   return (
-    <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-gray-700 transition-colors">
+    <div
+      onClick={handleCardClick}
+      className="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-gray-700 transition-colors cursor-pointer"
+    >
+      {/* same content as before */}
       <div className="flex items-start gap-4 mb-4">
         <div className="w-16 h-16 bg-gray-800 rounded-xl flex items-center justify-center text-2xl font-bold">
           {airdrop.name.charAt(0)}
@@ -49,7 +60,13 @@ const AirdropCard = ({ airdrop }) => {
         </div>
       </div>
 
-      <button className="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-semibold py-3 rounded-lg flex items-center justify-center gap-2">
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          handleCardClick();
+        }}
+        className="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-semibold py-3 rounded-lg flex items-center justify-center gap-2"
+      >
         Claim now <ArrowRight size={18} />
       </button>
     </div>
