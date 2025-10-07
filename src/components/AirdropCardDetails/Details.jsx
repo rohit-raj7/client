@@ -26,54 +26,68 @@ const SendIcon = () => (
 // Main Component
 export default function Details() {
   return (
-    <div className="bg-gray-900 min-h-screen font-sans text-gray-300 flex items-center justify-center p-4">
+    // Main container with dark background and centered content
+    <div className="bg-gray-900 min-h-screen font-sans text-gray-300 flex items-center justify-center p-4 sm:p-6 lg:p-8">
       <div className="max-w-7xl w-full mx-auto">
-        <div className="bg-[#111827] rounded-2xl shadow-2xl p-6 md:p-10">
+        {/* Card container with a more refined background, rounded corners, and shadow */}
+        <div className="bg-[#111827] rounded-2xl shadow-2xl overflow-hidden">
           
-          {/* Top Section: Grid Layout for responsiveness */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
-            
-            {/* Left Column */}
-            <div className="lg:col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
-              <div className="bg-gray-800 w-40 h-40 rounded-full flex items-center justify-center mb-6 border-4 border-gray-700">
-                  <svg className="w-24 h-24 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              </div>
+          {/* Main Grid Layout: Stacks on mobile, becomes 5-column grid on large screens */}
+          <div className="grid grid-cols-1 lg:grid-cols-5">
 
-              <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Time Remaining</p>
-              
-              <div className="flex items-center gap-3 mb-6">
-                <div className="bg-gray-800/50 p-3 rounded-lg w-20 text-center">
-                  <p className="text-3xl font-bold text-white">13</p>
-                  <p className="text-xs text-gray-400">Days</p>
-                </div>
-                <p className="text-3xl font-light text-gray-600">:</p>
-                <div className="bg-gray-800/50 p-3 rounded-lg w-20 text-center">
-                  <p className="text-3xl font-bold text-white">21</p>
-                  <p className="text-xs text-gray-400">Hours</p>
-                </div>
-                 <p className="text-3xl font-light text-gray-600">:</p>
-                <div className="bg-gray-800/50 p-3 rounded-lg w-20 text-center">
-                  <p className="text-3xl font-bold text-white">05</p>
-                  <p className="text-xs text-gray-400">Minutes</p>
-                </div>
-              </div>
-
-              <button className="w-full bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
-                Claim Your Share of 50M $AITV
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </button>
+            {/* Left Column: Image */}
+            {/* Spans 2 columns on large screens. Hidden on mobile and stacked on top by default. */}
+            <div className="lg:col-span-2 h-64 lg:h-full">
+              <img 
+                src="https://placehold.co/600x800/111827/9CA3AF?text=AITV+Project" 
+                alt="AITV promotion visual" 
+                className="w-full h-full object-cover"
+                // Fallback in case the image fails to load
+                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/600x800/111827/9CA3AF?text=Image+Not+Found'; }}
+              />
             </div>
-
-            {/* Right Column */}
-            <div className="lg:col-span-2">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-3 leading-tight">
+            
+            {/* Right Column: Content */}
+            {/* Spans 3 columns on large screens. Takes full width on mobile. */}
+            <div className="lg:col-span-3 p-6 sm:p-8 md:p-12 flex flex-col justify-center">
+              
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
                 Engage with AITV agents to earn the $AITV airdrop
               </h1>
-              <p className="text-lg text-gray-400 mb-8">
+              <p className="text-base sm:text-lg text-gray-400 mb-8">
                 Sign up, claim credits, complete missions, and interact to earn rewards.
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6 border-t border-b border-gray-700/50 py-6">
+              {/* Countdown Timer */}
+              <div className="mb-8">
+                <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Time Remaining</p>
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="bg-gray-800/50 p-3 rounded-lg flex-1 text-center">
+                    <p className="text-2xl sm:text-3xl font-bold text-white">13</p>
+                    <p className="text-xs text-gray-400">Days</p>
+                  </div>
+                  <p className="text-2xl sm:text-3xl font-light text-gray-600">:</p>
+                  <div className="bg-gray-800/50 p-3 rounded-lg flex-1 text-center">
+                    <p className="text-2xl sm:text-3xl font-bold text-white">21</p>
+                    <p className="text-xs text-gray-400">Hours</p>
+                  </div>
+                  <p className="text-2xl sm:text-3xl font-light text-gray-600">:</p>
+                  <div className="bg-gray-800/50 p-3 rounded-lg flex-1 text-center">
+                    <p className="text-2xl sm:text-3xl font-bold text-white">05</p>
+                    <p className="text-xs text-gray-400">Minutes</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Call to Action Button */}
+              <button className="w-full bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 mb-8">
+                Claim Your Share of 50M $AITV
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </button>
+
+              {/* Meta Info Section */}
+              {/* Stacks on mobile, becomes 3-column grid on medium screens */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-gray-700/50 pt-6">
                 <div>
                   <p className="text-sm font-semibold text-gray-400 mb-2">Reward</p>
                   <p className="text-lg font-bold text-yellow-400">$AITV</p>
@@ -86,7 +100,7 @@ export default function Details() {
                     <a href="#" aria-label="Telegram"><SendIcon /></a>
                   </div>
                 </div>
-                <div className="col-span-2 md:col-span-1">
+                <div className="col-span-1 sm:col-span-1">
                   <p className="text-sm font-semibold text-gray-400 mb-2">Category</p>
                   <div className="flex flex-wrap gap-2">
                     <span className="bg-gray-700/50 text-gray-300 text-xs font-medium px-3 py-1 rounded-full">Airdrop</span>
@@ -94,28 +108,6 @@ export default function Details() {
                   </div>
                 </div>
               </div>
-
-              {/* Task Description */}
-              <div className="mt-8">
-                <h2 className="text-2xl font-bold text-white mb-4">Task Description</h2>
-                <div className="space-y-4 text-gray-300 leading-relaxed">
-                   <p>
-                    <strong className="text-yellow-400">AITV.GG</strong> is an autonomous AI media network where AI agents host live shows and react to the audience in real time. To reward early community members, AITV has launched a multi-wave airdrop: <strong className="text-white">50M $AITV (5% of supply)</strong> is dedicated to contributors.
-                  </p>
-                  <p>
-                    Wave 1 (September) allocates <strong className="text-white">10M $AITV</strong> via four streams: instant claims, credit-based rewards, staking rewards, and vested packages. Progress is tracked by:
-                  </p>
-                  <ul className="list-disc list-inside space-y-2 pl-2">
-                    <li><strong className="text-white">Credits</strong> &mdash; in-app currency you spend to engage with agents (e.g., prompts, actions).</li>
-                    <li><strong className="text-white">XP</strong> &mdash; points from completing missions and referrals; used for leaderboards and rewards.</li>
-                    <li><strong className="text-white">Staking rewards</strong> &mdash; optional; stake to boost long-term allocations.</li>
-                  </ul>
-                  <p>
-                    No coding needed. You create an account, claim free credits, complete missions, and interact with agent channels to participate.
-                  </p>
-                </div>
-              </div>
-
             </div>
           </div>
         </div>
